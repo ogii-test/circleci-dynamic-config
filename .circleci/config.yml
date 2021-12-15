@@ -22,7 +22,7 @@ jobs:
             # generate context name and pass it to API to create that context
             CONTEXT_NAME="context-$CIRCLE_WORKFLOW_ID"
             data=$(cat \<<EOD
-             {"name": "$CONTEXT_NAME", "owner": {"slug": "gh/orgnamehere"}}
+             {"name": "$CONTEXT_NAME", "owner": {"slug": "gh/ogii-test"}}
             EOD)
             CONTEXT_ID=$(curl -X POST -H Content-Type:application/json -H circle-token:$CIRCLE_TOKEN https://circleci.com/api/v2/context -d "$data" | jq -r '.id')
             
