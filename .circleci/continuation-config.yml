@@ -1,0 +1,32 @@
+version: 2.1
+  
+parameters:
+  context-id:
+    type: string
+    default: ""
+  context-name:
+    type: string
+    default: ""
+
+jobs:
+  job1:
+    docker:
+      -  image: cimg/base:2021.07
+    steps:
+      - run: 
+          name: Verify context-id was passed properly
+          command: echo << pipeline.parameters.context-id >>
+      - run: 
+          name: Verify if variable foobar is set inside of context
+          command: echo $foobar
+      - run: 
+          name: Delete Context
+          command: |
+            RESPONSE=$(curl -X DELETE -H Content-Type:application/json -H circle-token:$CIRCLE_TOKEN https://circleci.com/api/v2/context/<< pipeline.parameters.context-id >>)
+            echo $RESPONSE
+workflows:
+  workflow1:
+    jobs:
+      - job1:
+         context:
+          - << pipeline.parameters.context-name >>
