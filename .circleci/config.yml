@@ -6,7 +6,7 @@ orbs:
   continuation: circleci/continuation@0.1.2
 
 jobs:
-  setup:
+  setup: 
     docker:
      - image: cimg/base:2021.07 
     steps:
