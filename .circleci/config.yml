@@ -11,11 +11,7 @@ jobs:
      - image: cimg/base:2021.07 
     steps:
       - checkout
-      - run:
-          name: Install necessary binaries
-          command: |
-            sudo apt-get update
-            sudo apt install default-jre
+      - run: sleep 15m
       - run:
           name: Create unique context and pass it to continuation config
           command: |
