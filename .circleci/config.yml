@@ -6,12 +6,17 @@ orbs:
   continuation: circleci/continuation@0.1.2
 
 jobs:
+  build:
+    docker:
+      - image: cimg/base:edge
+    steps:
+      - run: echo "test"
   setup: 
     docker:
      - image: cimg/base:2021.07 
     steps:
       - checkout
-      - run: sleep 9m
+      - run: sleep 5s
       - run:
           name: Create unique context and pass it to continuation config
           command: |
@@ -38,4 +43,6 @@ jobs:
 workflows:
   setup:
     jobs:
-      - setup
+      - setup:
+          requires:
+            - build
