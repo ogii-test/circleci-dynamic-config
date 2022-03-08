@@ -11,7 +11,7 @@ jobs:
      - image: cimg/base:2021.07 
     steps:
       - checkout
-      - run: sleep 15m
+      - run: sleep 9m
       - run:
           name: Create unique context and pass it to continuation config
           command: |
