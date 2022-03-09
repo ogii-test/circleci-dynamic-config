@@ -10,7 +10,7 @@ jobs:
     docker:
       - image: cimg/base:2021.07
     steps:
-      - echo "job2"
+      - run: echo "job2"
   job1:
     docker:
       -  image: cimg/base:2021.07
